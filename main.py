@@ -6,13 +6,9 @@ b = bank.Bank("md_bank")
 
 acc1 = b.create_savings_account(account_name="John", initial_deposit=4000)
 acc2 = b.create_savings_account(account_name="berth", initial_deposit=2000)
-# print(acc1._created)
-# print(acc1.balance)
-# print(acc1.withdraw(200))
-# print(acc1.balance)
-
-for i in b.list_accounts():
-    print(i.info())
+print(acc1._created)
+print(acc1.balance)
+print(acc1.withdraw(200))
 print(acc1.balance)
 
 

@@ -22,16 +22,15 @@ class AccountBase(ABC):
         if self.balance >= amount:
             self.balance -= amount
             self._created = datetime.now()
-            print(f"succesful withdrawed: {amount}")
-            print(f"new balance = {self.balance}")
+            return f"succesful withdrawed: {amount} \nnew balance = {self.balance} "
         else:
-            print("you ran out of money friend")
+            return "you ran out of money friend"
 
     def info(self):
-        print(f"bank name: {self._bank_name}")
-        print(f"account_name: {self._account_name}")
-        print(f"created account on: {self._created}")
-        print(f"balance: {self.balance}")
+        return f"bank name: {self._bank_name}"
+        # f"account_name: {self._account_name}")
+        # print(f"created account on: {self._created}")
+        # print(f"balance: {self.balance}")
 
 
 class Savings_Account(AccountBase):
@@ -47,16 +46,14 @@ class Savings_Account(AccountBase):
 
     def deposit(self, amount: int):
         self.balance += amount
-        print(f"succesfully raised your money with {amount}")
-        print(f"new balance = {self.balance}")
+        return f"succesfully raised your money with {amount} \nnew balance = {self.balance}"
 
     def add_interest(self):
         self.balance *= self.interest_rate
-        print("your annual interest is added")
-        print(f"your new balance = {self.balance}")
+        return "your annual interest is added \nyour new balance = {self.balance}"
 
     def compound_interest_calculator(self, n_years):
-        print(self.balance * (self.interest_rate**n_years))
+        return self.balance * (self.interest_rate**n_years)
 
 
 class StudentAccount(AccountBase):
