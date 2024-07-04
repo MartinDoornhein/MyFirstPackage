@@ -1,4 +1,5 @@
 from src.accounts import AccountBase, Savings_Account
+import pandas as pd
 
 
 class Bank:
@@ -25,3 +26,20 @@ class Bank:
         """
 
         return self._accounts
+
+    def export_bank_accounts(self):
+        account_dict = {}
+        for account in self.list_accounts():
+            # Create a dictionary for the current account's details
+            account_details = {
+                "bank_name": self._name,
+                "account_name": account._account_name,
+                "balance": account.balance,
+                "interest_rate": account.interest_rate,
+                "created": str(account._created),
+            }
+
+            # Use the account's name or some unique identifier as the key
+            # and the account details dictionary as the value
+            account_dict[account._account_name] = account_details
+        return pd.DataFrame(account_dict)
