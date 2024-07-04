@@ -50,7 +50,11 @@ class Savings_Account(AccountBase):
 
     def add_interest(self):
         self.balance *= self.interest_rate
-        return "your annual interest is added \nyour new balance = {self.balance}"
+        return f"your annual interest is added \nyour new balance = {self.balance}"
+
+    def change_interest_rate(self, new_interest_rate: float):
+        self.interest_rate = new_interest_rate
+        return f"interest rate changed to {new_interest_rate}"
 
     def compound_interest_calculator(self, n_years):
         return self.balance * (self.interest_rate**n_years)
